@@ -1,0 +1,59 @@
+DATALOADER:
+  TRAIN_X:
+    BATCH_SIZE: 4
+  TEST:
+    BATCH_SIZE: 100
+  NUM_WORKERS: 2
+
+OPTIM:
+  NAME: "sgd"
+  LR: 0.0025
+  MAX_EPOCH: 50   # longer epochs than base2new experiments
+  LR_SCHEDULER: "cosine"
+  WARMUP_EPOCH: 1
+  WARMUP_TYPE: "constant"
+  WARMUP_CONS_LR: 1e-5
+
+TRAIN:
+  PRINT_FREQ: 40
+
+# It is neccessary to register these keys in configs in advance
+PointEncoder: {
+  NAME: PointBert,
+  trans_dim: 384, 
+  depth: 12, 
+  drop_path_rate: 0.1, 
+  cls_dim: 40, 
+  num_heads: 6,
+  group_size: 32, 
+  num_group: 512,
+  encoder_dims: 256,
+  num_points: 1024,
+}
+
+# Taking these values to build TextEncoder
+TextEncoder: {
+  embed_dim: 512,
+  ctx_len: 77,
+  vocab_size: 49408,
+  trans_width: 512, 
+  trans_heads: 8,
+  trans_layers: 12,
+}
+
+TRAINER:
+  PointPRC:
+    EVAL_ONLY: False
+    N_CTX_POINT: 4
+    N_CTX_TEXT: 5
+    CTX_INIT: "a point cloud of a"
+    PREC: "fp32"
+    PROMPT_DEPTH_POINT: 9
+    PROMPT_DEPTH_TEXT: 9
+    TEXT_LOSS_WEIGHT: 25
+    POINT_LOSS_WEIGHT: 10
+    MEC_MEAN: 15
+    MEC_STD: 1
+
+TEST:
+  FINAL_MODEL: 'best_val'

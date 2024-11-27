@@ -40,9 +40,12 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
   pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 ```
 
-`pueue` is a shell command management software, we use it for scheduling the model training & evaluation task, please refer to the [official page](https://github.com/Nukesor/pueue) for installation and basic usage. We recommend this tool because under its help you can run the experiments at scale thus save your time.
+`pueue` is a shell command management software, we use it for scheduling the model training & evaluation tasks, please refer to the [official page](https://github.com/Nukesor/pueue) for installation and basic usage. We recommend this tool because under its help you can run the experiments at scale thus save your time.
 
-**NOTE:** We provide a complete package list of our virtual environment in `env.yaml`. Feel free to check whether you need a specific package. 
+**NOTE:** We provide a complete package list of our virtual environment in `env.yaml`. Feel free to check whether you need a specific package. If it the case, run the following command to install it, _e.g._ 
+```sh
+  pip install timm==0.9.16
+```
 
 ### Pre-trained Weights
 1. In the experiments, we use the following models as the baselines. The pre-trained weights of these models can be found in their public GitHub repositories. 
@@ -60,7 +63,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
     - S-PB_T50_RS
     - ShapeNetCoreV2
 
-2. The following table shows the statistics of this benchmark
+2. The following table shows the statistics of this benchmark.
 
     ![](assets/base-to-new.jpg)
 
@@ -72,18 +75,19 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
     - Sim-to-Real
     - PointDA
 
-2. The following table shows the statistics of this benchmark
+2. The following table shows the statistics of this benchmark.
 
     ![](assets/cross-dataset.png)
 
 ### _Few-shot Generalization_
 1. Although this benchmark contains same datasets as the _Base-to-new Class_, it investigates the model generalization under low-data regime (1, 2, 4, 8, and 16 shots), which is quite different from the evaluation setting of _Base-to-new Class_.
 
-2. The following table shows the statistics of this benchmark
+2. The following table shows the statistics of this benchmark.
 
     ![](assets/few-shot.jpg)
 
 ## Usage
+We describe the experiment settings and implementation details in the paper, referring to Section 3.3, Section 4.1, Appendix A.1 and A.2.  
 
 ### _Base-to-new Class Generalization_
 1. This part corresponds to the experiments in Section 4.2 (Table 1) and Appendix (Table 9). 
@@ -127,6 +131,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
     - `scripts/pointprc/xset_corrupt.sh` for _Data Corruption_
     - `scripts/pointprc/xset_train_sim2real.sh` and `scripts/pointprc/xset_test_sim2real.sh` for _Sim-to-Real_
     - `scripts/pointprc/xset_train_pointda.sh` and `scripts/pointprc/xset_test_pointda.sh` for  _PointDA_
+
 ## Citation
 ```bibtex
     @inproceedings{sun24point-prc,

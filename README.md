@@ -51,17 +51,19 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 1. In the experiments, we use the following models as the baselines. The pre-trained weights of these models can be found in their public GitHub repositories. 
     * [PointCLIP](https://github.com/ZrrSkywalker/PointCLIP) 
     * [PointCLIP V2](https://github.com/yangyangyang127/PointCLIP_V2)
-    * [ULIP](https://github.com/salesforce/ULIP)
-    * [ULIP-2](https://github.com/salesforce/ULIP)
+    * [ULIP](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/pretrained-weights/ulip)
+    * [ULIP-2](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/pretrained-weights/ulip-2)
+
+    - **NOTE:** ULIP-2 uses same text encoder as ULIP
 
 ## New 3DDG Benchmarks
 ### _Base-to-new Class Generalization_
 1. The datasets used in this benchmark can be downloaded according to the following links.
-    - ModelNet40
-    - S-OBJ_ONLY
-    - S-OBJ_BG
-    - S-PB_T50_RS
-    - ShapeNetCoreV2
+    - [ModelNet40](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/base2new/modelnet40)
+    - [S-OBJ_ONLY](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/base2new/scanobjectnn/obj_only)
+    - [S-OBJ_BG](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/base2new/scanobjectnn/obj_bg)
+    - [S-PB_T50_RS](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/base2new/scanobjectnn/hardest)
+    - [ShapeNetCoreV2](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/base2new/shapenetcorev2)
 
 2. The following table shows the statistics of this benchmark.
 
@@ -69,18 +71,20 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 ### _Cross-dataset Generalization_
 1. The datasets used in this benchmark can be downloaded according to the following links.
-    - OmniObject3d (Omin3D)
-    - ModelNet-C (7 types of corruptions)
-        - add global outliers, add local outliers, dropout global structure, dropout local region, rotation, scaling, jittering
-    - Sim-to-Real
-    - PointDA
+    - [OOD Generalization](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/xset/dg)
+        - OmniObject3d (Omin3D)
+    - [Data Corruption](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/xset/corruption)
+        - ModelNet-C (7 types of corruptions)
+            - add global outliers, add local outliers, dropout global structure, dropout local region, rotation, scaling, jittering
+    - [Sim-to-Real](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/xset/sim2real)
+    - [PointDA](https://huggingface.co/datasets/auniquesun/Point-PRC/tree/main/new-3ddg-benchmarks/xset/pointda)
 
 2. The following table shows the statistics of this benchmark.
 
     ![](assets/cross-dataset.png)
 
 ### _Few-shot Generalization_
-1. Although this benchmark contains same datasets as the _Base-to-new Class_, it investigates the model generalization under low-data regime (1, 2, 4, 8, and 16 shots), which is quite different from the evaluation setting of _Base-to-new Class_.
+1. Although this benchmark contains same datasets as the _Base-to-new Class_, it investigates the model generalization under extremely low-data regime (1, 2, 4, 8, and 16 shots), which is quite different from the evaluation setting in _Base-to-new Class Generalization_.
 
 2. The following table shows the statistics of this benchmark.
 

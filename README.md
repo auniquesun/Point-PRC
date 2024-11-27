@@ -67,7 +67,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 2. The following table shows the statistics of this benchmark.
 
-    ![](assets/base-to-new.jpg)
+    ![](assets/base-to-new.png)
 
 ### _Cross-dataset Generalization_
 1. The datasets used in this benchmark can be downloaded according to the following links.
@@ -88,7 +88,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 2. The following table shows the statistics of this benchmark.
 
-    ![](assets/few-shot.jpg)
+    ![](assets/few-shot.png)
 
 ## Usage
 We describe the experiment settings and implementation details in the paper, referring to Section 3.3, Section 4.1, Appendix A.1 and A.2.  

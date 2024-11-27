@@ -19,7 +19,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 ## Environment
 ### Package Setup
-* [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch)
+* [dassl](https://github.com/auniquesun/dassl)
 * Ubuntu 23.10
 * Python 3.8.16
 * PyTorch 1.12.0
@@ -29,15 +29,20 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 * pueue & pueued 2.0.4
 
 ```sh
-  # option 1: create conda virtual env according to the provided env.yaml
-  conda env create -f env.yaml
-  codna activate pointprc
-
-  # option 2: create conda virtual env by your own
+  # NOTE The option 1 is recommended. A complete package list is provided in `env.yaml`
+  # option 1: create conda virtual env by your own
   conda create -n pointprc python=3.8.16
   codna activate pointprc
-
+  # install torch
   pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+  # install dassl
+  git clone https://github.com/auniquesun/dassl
+  cd dassl/
+  python setup.py develop # (no need to re-build if the source code is modified)
+
+  # option 2: create conda virtual env according to the provided env.yaml
+  conda env create -f env.yaml
+  codna activate pointprc
 ```
 
 `pueue` is a shell command management software, we use it for scheduling the model training & evaluation tasks, please refer to the [official page](https://github.com/Nukesor/pueue) for installation and basic usage. We recommend this tool because under its help you can run the experiments at scale thus save your time.

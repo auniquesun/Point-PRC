@@ -52,7 +52,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
     * [ULIP-2](https://github.com/salesforce/ULIP)
 
 ## New 3DDG Benchmarks
-### _Base-to-new Class Genralization_
+### _Base-to-new Class Generalization_
 1. The datasets used in this benchmark can be downloaded according to the following links.
     - ModelNet40
     - S-OBJ_ONLY
@@ -64,18 +64,19 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
     ![](assets/base-to-new.jpg)
 
-### _Cross-dataset Genralization_
+### _Cross-dataset Generalization_
 1. The datasets used in this benchmark can be downloaded according to the following links.
     - OmniObject3d (Omin3D)
     - ModelNet-C (7 types of corruptions)
+        - add global outliers, add local outliers, dropout global structure, dropout local region, rotation, scaling, jittering
     - Sim-to-Real
     - PointDA
 
 2. The following table shows the statistics of this benchmark
 
-    ![](assets/cross-dataset.jpg)
+    ![](assets/cross-dataset.png)
 
-### _Few-shot Genralization_
+### _Few-shot Generalization_
 1. Although this benchmark contains same datasets as the _Base-to-new Class_, it investigates the model generalization under low-data regime (1, 2, 4, 8, and 16 shots), which is quite different from the evaluation setting of _Base-to-new Class_.
 
 2. The following table shows the statistics of this benchmark
@@ -83,12 +84,49 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
     ![](assets/few-shot.jpg)
 
 ## Usage
-### _Base-to-new Class Genralization_
 
-### _Cross-dataset Genralization_
+### _Base-to-new Class Generalization_
+1. This part corresponds to the experiments in Section 4.2 (Table 1) and Appendix (Table 9). 
 
-### _Few-shot Genralization_
+2. To evaluate the performances on this benchmark, you will use `scripts/pointprc/base2new_train.sh` and `scripts/pointprc/base2new_test.sh`. The former trains a model on base classes while the latter evaluates the trained model on new classes. Both scripts have 18 input arguments, as commented in the script file. 
 
+3. Taking S-PB_T50_RS (the hardest split of `ScanObjectNN`) as an example, we train the model on base classes and then evaluate the performance on new classes. 
+```sh
+    # prompt learning on base classes
+    ./scripts/pointprc/base2new_train.sh 0 data/base2new/scanobjectnn scanobjectnn custom_ulip manual64 9 2 2 16 20 hardest full task_perform False False False ulip2 l1_dist
+
+    # test on novel classes
+    ./scripts/pointprc/base2new_test.sh 0 data/base2new/scanobjectnn scanobjectnn custom_ulip manual64 9 2 2 16 20 hardest full task_perform False False False ulip2 l1_dist
+```
+
+### _Few-shot Generalization_
+1. This part corresponds to the experiments in Section 4.4 (Figure 4). 
+
+2. To evaluate the performances on this benchmark, you will use `scripts/pointprc/fewshot_train_eval.sh`. This script also has 18 command-line arguments, as explained in the file. 
+
+3. Taking ShapeNetCoreV2 as an example, we train the model using 1, 2, 4, 8 and 16 shots per class and then evaluate the performance on the whole test set of the dataset. 
+```sh
+    # train using (1/2/4/8/16)-shot and evaluate on the whole test set
+    ./scripts/pointprc/fewshot_train_eval.sh 0 data/fewshot/shapenetcorev2 shapenetcorev2 custom_ulip 9 2 2 1 50 obj_only full task_perform False False False manual64 ulip2 l1_dist
+```
+
+### _Cross-dataset Generalization_
+1. This part corresponds to the experiments in Section 4.3 (Table 2 and 3) and Appendix (Table 10 and 11). 
+
+2. This benchmark has four types of evaluation settings: _OOD Generalization_, _Data Corruption_, _Sim-to-Real_, and _PointDA_, referring to Table 5 in Appendix of the paper. 
+
+3. To evaluate the performances on _OOD Generalization_ of this benchmark, you will use `scripts/pointprc/xset_test_dg.sh`. This scripts accepts 17 command-line arguments, as explained in the file. 
+    - Note that in this setting, **ShapeNetCorev2** serves as the source domain and other four datasets (ModelNet40, S-PB_T50_RS, S-OBJ_BG, S-OBJ_ONLY, Omni3D) act as the target domains. 
+    - Since the model has been trained on ShapeNetCoreV2 in the _Few-shot Generalization_ benchmark, when evaluating the performance on a target domain (e.g., Omni3D), we directly load the weights of 16-shot ShapeNetCorev2. 
+```sh
+    # train using (1/2/4/8/16)-shot and evaluate on the whole test set
+    ./scripts/pointprc/xset_test_dg.sh 0 data/xset/omniobject3d omniobject3d shapenetcorev2 12 4 4 50 obj_only full task_perform False False False manual64 ulip2 l1_dist
+```
+
+4. To evaluate the performances on other three settings, you can check the following scripts for details.
+    - `scripts/pointprc/xset_corrupt.sh` for _Data Corruption_
+    - `scripts/pointprc/xset_train_sim2real.sh` and `scripts/pointprc/xset_test_sim2real.sh` for _Sim-to-Real_
+    - `scripts/pointprc/xset_train_pointda.sh` and `scripts/pointprc/xset_test_pointda.sh` for  _PointDA_
 ## Citation
 ```bibtex
     @inproceedings{sun24point-prc,

@@ -61,6 +61,8 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
     - **NOTE:** ULIP-2 uses same text encoder as ULIP
 
+2. Make a folder called `weights` in under the project and save the pre-trained weights into this folder. 
+
 ### Datasets
 1. We conduct experiments on three new 3D domain generalization ([3DDG](#new-3ddg-benchmarks)) benchmarks proposed by us, as introduced in the next section. 
     - base-to-new class generalization (base2new)
@@ -69,7 +71,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 2. The structure of these benchmarks should be organized as follows.
 ```sh
-    data # placed in the same level of `trainers`, `scripts`, etc. 
+    data # placed in the same level of `trainers`, `weights`, etc. 
     |----base2new
         |----modelnet40
         |----scanobjectnn

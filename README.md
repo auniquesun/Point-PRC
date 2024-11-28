@@ -71,20 +71,21 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 2. The structure of these benchmarks should be organized as follows.
 ```sh
-    data # placed in the same level of `trainers`, `weights`, etc. 
-    |----base2new
-        |----modelnet40
-        |----scanobjectnn
-        |----shapenetcorev2
-    |----xset
-        |----corruption
-        |----dg
-        |----sim2real
-        |----pointda
-    |----fewshot
-        |----modelnet40
-        |----scanobjectnn
-        |----shapenetcorev2
+    /path/to/Point-PRC
+    |----data # placed in the same level of `trainers`, `weights`, etc. 
+        |----base2new
+            |----modelnet40
+            |----scanobjectnn
+            |----shapenetcorev2
+        |----xset
+            |----corruption
+            |----dg
+            |----sim2real
+            |----pointda
+        |----fewshot
+            |----modelnet40
+            |----scanobjectnn
+            |----shapenetcorev2
 ```
 
 3. You can find the usage instructions and download links of these new 3DDG benchmarks in the following section. 

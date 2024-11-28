@@ -61,6 +61,32 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
     - **NOTE:** ULIP-2 uses same text encoder as ULIP
 
+### Datasets
+1. We conduct experiments on three new 3D domain generalization ([3DDG](#new-3ddg-benchmarks)) benchmarks proposed by us, as introduced in the next section. 
+    - base-to-new class generalization (base2new)
+    - cross-dataset generalization (xset)
+    - few-shot generalization (fewshot)
+
+2. The structure of these benchmarks should be organized as follows.
+```sh
+    data # placed in the same level of `trainers`, `scripts`, etc. 
+    |----base2new
+        |----modelnet40
+        |----scanobjectnn
+        |----shapenetcorev2
+    |----xset
+        |----corruption
+        |----dg
+        |----sim2real
+        |----pointda
+    |----fewshot
+        |----modelnet40
+        |----scanobjectnn
+        |----shapenetcorev2
+```
+
+3. You can find the usage instructions and download links of these new 3DDG benchmarks in the following section. 
+
 ## New 3DDG Benchmarks
 ### _Base-to-new Class Generalization_
 1. The datasets used in this benchmark can be downloaded according to the following links.

@@ -49,7 +49,7 @@ This paper investigates the 3D domain generalization (3DDG) ability of large 3D 
 
 **NOTE:** We provide a complete package list of our virtual environment in `env.yaml`. Feel free to check whether you need a specific package. If it the case, run the following command to install it, _e.g._ 
 ```sh
-  pip install timm==0.9.16
+  pip install h5py==3.10.0 plyfile==1.0.3
 ```
 
 ### Pre-trained Weights

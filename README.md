@@ -171,8 +171,9 @@ We describe the experiment settings and implementation details in the paper, ref
     - `scripts/pointprc/xset_train_pointda.sh` and `scripts/pointprc/xset_test_pointda.sh` for  _PointDA_
 
 ## Citation
+1. If you find our paper, code, new 3DDG benchmarks, or this repository useful, please consider giving a star ⭐ and citation.
 ```bibtex
-    @inproceedings{sun24point-prc,
+    @inproceedings{sun24pointprc,
         title={Point-PRC: A Prompt Learning Based Regulation Framework for Generalizable Point Cloud Analysis},
         author={Sun, Hongyu and Ke, Qiuhong and Wang, Yongcai and Chen, Wang and Yang, Kang and Li, Deying and Cai, Jianfei},
         booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems (NeurIPS)},

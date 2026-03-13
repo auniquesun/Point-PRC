@@ -173,13 +173,18 @@ We describe the experiment settings and implementation details in the paper, ref
 ## Citation
 1. If you find our paper, code, new 3DDG benchmarks, or this repository useful, please consider giving a star ⭐ and citation.
 ```bibtex
-    @inproceedings{sun24pointprc,
-        title={Point-PRC: A Prompt Learning Based Regulation Framework for Generalizable Point Cloud Analysis},
-        author={Sun, Hongyu and Ke, Qiuhong and Wang, Yongcai and Chen, Wang and Yang, Kang and Li, Deying and Cai, Jianfei},
-        booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems (NeurIPS)},
-        year={2024},
-        url={https://openreview.net/forum?id=g7lYP11Erv}
-    }
+    @inproceedings{sun24point-prc,
+    author = {Sun, Hongyu and Ke, Qiuhong and Wang, Yongcai and Chen, Wang and Yang, Kang and Li, Deying and Cai, Jianfei},
+    booktitle = {Advances in Neural Information Processing Systems},
+    doi = {10.52202/079017-3761},
+    editor = {A. Globerson and L. Mackey and D. Belgrave and A. Fan and U. Paquet and J. Tomczak and C. Zhang},
+    pages = {118456-118482},
+    publisher = {Curran Associates, Inc.},
+    title = {Point-PRC: A Prompt Learning Based Regulation Framework for Generalizable Point Cloud Analysis},
+    url = {https://proceedings.neurips.cc/paper_files/paper/2024/file/d6938c8e88ef62394d2f4f3fd428e036-Paper-Conference.pdf},
+    volume = {37},
+    year = {2024}
+}
 ```
 
 ## Acknowledgement
